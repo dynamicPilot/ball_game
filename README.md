@@ -1,15 +1,15 @@
-# ball_game
+# Ball Game
 
 Simple and pretty fun ball game for two players made with Python and PyGame.
 
 Ball Game special features:
 
-* Game for two players.
-* Shutter control via keyboard.
-* Players' score display.
-* Adding blocks and extra balls.
-* Special effects by balls. 
-* Reset balls feature.
+* Game for two players
+* Shutter control via keyboard
+* Players' score display
+* Adding blocks and extra balls
+* Special effects by balls
+* Reset balls feature
 
 Project is based on a demo game and a series of articles presented here:
 https://gitlab.com/the-gigi/pygame-breakout
@@ -18,9 +18,9 @@ https://gitlab.com/the-gigi/pygame-breakout
 
 To play this game locally you should have:
 
-* Game folder copy.
-* Python 3.x.
-* PyGame.
+* Game folder copy
+* Python 3.x
+* PyGame
 
 Play game with your friend by running: 
 ```
@@ -54,4 +54,5 @@ To restart all balls use "RESTART BALLS" button.
 * PyGame Documentations: https://www.pygame.org/docs/
 * Colors constants: https://www.webucator.com/blog/2015/03/python-color-constants-module/  
 
-## Have a Good Time!# ball_game
+## Have a Good Time!
+# ball_game
