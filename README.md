@@ -55,4 +55,3 @@ To restart all balls use "RESTART BALLS" button.
 * Colors constants: https://www.webucator.com/blog/2015/03/python-color-constants-module/  
 
 ## Have a Good Time!# ball_game
-# ball_game
