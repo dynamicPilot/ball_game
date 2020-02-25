@@ -1,7 +1,5 @@
 """
 Shutters Classes: left and right (based on Gameobject).
----
-Классы для шаттеров: левого и правого (на основе GameOdject).
 """
 
 import pygame
