@@ -1,7 +1,5 @@
 """
 Colors from:
----
-Перечень цветов из:
 
 https://www.webucator.com/blog/2015/03/python-color-constants-module/
 """
