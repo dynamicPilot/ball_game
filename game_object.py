@@ -1,7 +1,5 @@
 """
 Base GameObject Class for creating a game object.
----
-Базовый класс для создания игровых объектов.
 """
 
 import pygame
