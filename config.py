@@ -1,7 +1,5 @@
 """
 The main parameters of game objects (size, coordinates, colors...)
----
-Основные параметры игровых объектов (размер, координаты, цвета...)
 """
 
 import colors
