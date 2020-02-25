@@ -1,7 +1,5 @@
 """
 Base Game Class for creating a game.
----
-Базовый класс для создания игры.
 """
 
 import pygame
@@ -37,7 +35,7 @@ class Game:
             obj.draw(self.surface)
 
     def handle_events(self):
-        for event in pygame.event.get(): #цепочка событий
+        for event in pygame.event.get(): # chain of events
             if event.type == pygame.QUIT:
                 pygame.quit()
                 #sys.exit()
@@ -59,8 +57,8 @@ class Game:
             self.update()
             self.draw()
 
-            pygame.display.update() #обновление экрана
-            self.clock.tick(self.frame_rate) #управление вызовом следующей итерации
+            pygame.display.update()
+            self.clock.tick(self.frame_rate)
 
 
 
