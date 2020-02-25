@@ -1,7 +1,5 @@
 """
 Ball Class (based on Gameobject).
----
-Класс для шарика (на основе GameOdject).
 """
 
 import pygame
