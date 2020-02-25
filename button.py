@@ -1,7 +1,5 @@
 """
 Button Class (based on Gameobject).
----
-Класс для кнопок (на основе GameOdject).
 """
 
 import pygame
