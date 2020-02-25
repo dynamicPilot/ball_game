@@ -55,7 +55,7 @@ class Ballgame(Game):
         self.effected_player_to_change = None
         self.ball_index_to_change = 0
 
-    # Метод для создания и вывода сообщения игрокам
+    # Method for creating and displaying a message to players
     def show_message(self, text, color=colors.WHITE, font_name='Arial', font_size=20, centralized=False):
         message = TextObject(c.screen_width // 2, c.screen_height // 2, lambda: text, color, font_name, font_size)
         self.draw()
@@ -132,7 +132,7 @@ class Ballgame(Game):
         self.objects.append(self.shutter_2)
         self.shutters['player2'].append(self.shutter_2)
 
-    # Создание блоков (функция для кнопки)
+    # Creating bricks (function for button)
     def create_bricks(self):
         brick_number = random.randint(1,4)
         for i in range(brick_number):
@@ -147,7 +147,7 @@ class Ballgame(Game):
                 self.objects.append(brick)
                 self.bricks.append(brick)
 
-    # Отмена дейсвтия эффекта мяча по его индексу
+    # Canceling the effect of the ball by index
     def reset_effect_action(self, index):
         self.effected_player_to_change = self.effected_players[index]
         self.reset_effects[index](self)
@@ -155,25 +155,25 @@ class Ballgame(Game):
         self.effected_players[index] = None
         #print('Reset!!!!')
  
-    # Метод для изменения скорости мяча для эффекта
+    # Method for changing the ball speed
     def change_ball_speed(self, dy):
         self.balls[self.ball_index_to_change].speed = ( self.balls[self.ball_index_to_change].speed[0]+dy,  self.balls[self.ball_index_to_change].speed[1]+dy)
 
-    # Метод для изменения количества жизней игрока (не используется)
+    # Method for changing the number of player lives (not used)
     def change_player_live(self, delta):
         self.lives[self.effected_player_to_change] -= delta
         if self.lives[self.effected_player_to_change] == 0:
             self.loser = str(self.effected_player_to_change)
             self.game_over = True
 
-    # Метод для изменения счета игрока для эффекта
+    # Method for changing the player's score
     def change_player_score(self, delta):
         self.scores[self.effected_player_to_change] += delta
         if self.scores[self.effected_player_to_change] == c.loser_score:
             self.game_over = True
             self.loser = str(self.effected_player_to_change)
 
-    # Метод для изменения свойств шаттера для эффекта
+    # Method for changing the shutter parameters
     def change_shutter_size(self, marker):
         if marker == 'long':
             self.shutters[self.effected_player_to_change][0].rect.inflate_ip(0, self.shutters[self.effected_player_to_change][0].rect.height/2)
@@ -190,7 +190,7 @@ class Ballgame(Game):
         self.shutters[self.effected_player_to_change][0].rect.inflate_ip(0, - self.shutters[self.effected_player_to_change][0].rect.height + c.shutter_height)
         self.shutters[self.effected_player_to_change][0].offset = c.shutter_speed
 
-    # Метод для эффекта ball madness
+    # Method for ball madness
     def ball_hall_start(self):
         self.show_message('ATTENTION!!! BALL MADNESS!!!', centralized=True)
         for index in range(len(self.balls)):
@@ -203,7 +203,7 @@ class Ballgame(Game):
     def ball_hall_stop(self):
         pass
 
-    # Создание кнопок и меню
+    # Creating buttons and menu
     def create_menu(self):
         def on_play(button):
             self.objects.remove(self.menu_buttons[0]) # remove PLAY button
@@ -240,7 +240,7 @@ class Ballgame(Game):
             self.menu_buttons.append(but)
             self.mouse_handlers.append(but.handle_mouse_event)
 
-    # Создание окон для отображения счета игроков    
+    # Creating display to the player's score 
     def create_score_displays(self):
         self.score_display_1 = ScoreDisplay(c.score_display_params['player1'][0], c.score_display_params['player1'][1])
         self.score_label_player_1 = TextObject(self.score_display_1.centerx, self.score_display_1.centery - self.score_display_1.height/4, lambda: str(self.scores['player1']), c.score_display_text_color, c.score_display_font_name, c.score_display_font_size)
@@ -252,7 +252,7 @@ class Ballgame(Game):
         self.objects.append(self.score_display_2)
         self.objects.append(self.score_label_player_2)
 
-    # Создание основных игровых объектов
+    # Creating basic game objects
     def create_objects(self):
         self.create_field()
         self.create_gates()
@@ -260,14 +260,14 @@ class Ballgame(Game):
         self.create_shutters()
         self.create_menu()
 
-    # Метод для отслеживания соударений шарика и игровых объектов
+    # A method for tracking the collisions
     def handle_ball_collision(self):
         ball_index_to_remove =[]
 
         def crossing(obj, ball, c_l = 0, c_r = 0, c_t = 0, c_b = 0):
             """
-            Функция, определяющая пересечение между объектом и мячом.
-            Возвращает None или сторону пересечения.
+            A function that defines the intersection between an object and a ball.
+            Returns None or the intersection side.
             """
             #gap_l =c.ball_r*c_l
             #gap_r =c.ball_r*c_r
@@ -313,12 +313,12 @@ class Ballgame(Game):
                 else:
                     return 'left'
 
-        # Проверка каждого из шариков на столкновение с игровыми объектами и изменение поведения
+        # Checking each of the balls for collisions with game objects and changing behavior
         for index in range(len(self.balls)):
             ball = self.balls[index]
             ball_speed = list(ball.speed)
 
-            # Столкновение с шаттером player
+            # Collision with player's shutter
             for player, shutter in self.shutters.items():
                 side = crossing(shutter[0], ball)
                 if side is not None:
@@ -326,8 +326,8 @@ class Ballgame(Game):
                         ball.speed = (-ball_speed[0], ball_speed[1])
                     else:
                         ball.speed = (ball_speed[0], -ball_speed[1])
-                    # Специальные эффекты мяча
-                    # Если у мяча есть эффект и это первое соударение
+                    # Special ball effects
+                    # If the ball has an effect and this is the first impact
                     if ball.special_effect is not None and self.reset_effects[index] is None:
                         self.effected_players[index] = player
                         self.effect_start_times[index] = datetime.now()
@@ -336,15 +336,15 @@ class Ballgame(Game):
                         ball.special_effect[0](self)
                         self.reset_effects[index] = ball.special_effect[1]
 
-            # Столкновение с верхней/нижней границами поля
+            # Collision with top/bottom borders of the field
             if ball.rect.top < self.field.rect.top or ball.rect.bottom > self.field.rect.bottom:
                 ball.speed = (ball_speed[0], -ball_speed[1])
 
-            # Столкновение со стенами
+            # Collision with the walls
             if ball.rect.left < self.field.rect.left or ball.rect.right > self.field.rect.right:
                 ball.speed = (-ball_speed[0], ball_speed[1])
 
-            # Столкновение с блоками
+            # Collision with brick
             if len(self.bricks) > 0:
                 for brick in self.bricks:
                     side = crossing(brick, ball)
@@ -354,7 +354,7 @@ class Ballgame(Game):
                         else:
                             ball.speed = (ball_speed[0], -ball_speed[1])
 
-            # Столкновение с воротами игроков
+            # Collision with the gate
             for gate in self.gates:
                 side = crossing(gate, ball)
                 if side is not None:
@@ -365,7 +365,7 @@ class Ballgame(Game):
                     else:
                         ball_index_to_remove.append(index)
         
-        # Удаление шариков, попавших в ворота игроков
+        # Removing balls that hit the player's gate
         if len(ball_index_to_remove) > 0:
             for i in range(len(ball_index_to_remove)-1, -1, -1):
                 index = ball_index_to_remove[i]
@@ -379,7 +379,7 @@ class Ballgame(Game):
                 self.effect_start_times[index] = None
             ball_index_to_remove = []
         
-        # Проверка на оставшееся количество шариков
+        # Checking for the remaining number of balls
         if len(self.balls) == 0:
             self.create_balls()
             return
