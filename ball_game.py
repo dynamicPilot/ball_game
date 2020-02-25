@@ -1,7 +1,5 @@
 """
 The main class of the game that defines the display, game objects, methods, rules, etc.
----
-Основной класс игры, определяющий отображение, игровые объекты, методы, правила и т.д.
 """
 
 import pygame
