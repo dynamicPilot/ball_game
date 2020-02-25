@@ -1,7 +1,5 @@
 """
 ScoreDisplay Class (based on Gameobject).
----
-Класс для дисплеев, отображающих очки игроков (на основе GameOdject).
 """
 
 import pygame
