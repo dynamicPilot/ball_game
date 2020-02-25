@@ -1,7 +1,5 @@
 """
 Gate Class (based on Gameobject).
----
-Класс для ворот (на основе GameOdject).
 """
 
 import pygame
