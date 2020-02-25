@@ -1,7 +1,5 @@
 """
 Base TextObject Class for creating a text object.
----
-Базовый класс для создания текстовых объектов.
 """
 
 import pygame
@@ -20,8 +18,7 @@ class TextObject:
     
     def draw(self, surface, centralized=False):
         text_surface, self.text_surface_area = self.get_surface(self.text_func())
-        # centralized работает корректно, когда при создании тексовой поверхности передаются
-        # координаты центра кнопки или поверхности для отрисовки
+        # centralized works correctly when you create a text surface
         if centralized:
             pos = (self.pos[0] - self.text_surface_area.width/2, self.pos[1] - self.text_surface_area.height/2)
         else:
