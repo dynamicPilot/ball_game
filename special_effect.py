@@ -1,7 +1,5 @@
 """
 Dictionary of special effects.
----
-Словарь спецэффектов.
 """
 
 import colors
